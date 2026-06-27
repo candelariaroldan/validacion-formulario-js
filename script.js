@@ -1,7 +1,22 @@
 const submitFunction = (event) => {
-    event.preventDefault(); // Se previene la actualización de la página al enviar el formulario
-    validarFormulario(); // Se llama a la función validarFormulario para realizar la validación de los campos del formulario
+    if (!validarFormulario()) {
+        event.preventDefault(); // Evita que el formulario se envíe si la validación falla
+    } else {
+        event.preventDefault(); // Evita que el formulario se envíe para poder mostrar el mensaje de éxito
+
+        alert(
+            'Los datos enviados fueron: \n' +
+            'Nombre: ' + document.getElementById('nombre').value + '\n' +
+            'Apellido: ' + document.getElementById('apellido').value + '\n' +
+            'Documento: ' + document.getElementById('documento').value + '\n' +
+            'Email: ' + document.getElementById('email').value + '\n' +
+            'Edad: ' + document.getElementById('edad').value + '\n' +
+            'Actividad: ' + document.getElementById('actividad').value + '\n' +
+            'Nivel de Estudios: ' + document.getElementById('nivelEstudios').value + '\n'
+            );
+    }
 }
+   
 
 document.getElementById("formulario").addEventListener("submit", submitFunction); // escucha el evento submit del formulario y llama a la función submitFunction cuando se envía el formulario
 
